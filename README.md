@@ -1,6 +1,4 @@
-# Project Title
-
-Sewing Plot PDF Converter
+# Sewing Plot PDF Converter
 
 Proof of concept - sewing plotter pdf file to image converter
 
