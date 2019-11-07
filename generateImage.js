@@ -1,11 +1,6 @@
-fs = require('fs');
+var fs = require('fs');
 var PDFImage = require("pdf-image").PDFImage;
 var Jimp = require('jimp');
-
-process.on('unhandledRejection', function(reason, p){
-    console.log("Possibly Unhandled Rejection at: Promise ", p, " reason: ", reason);
-    // application specific logging here
-});
 
 function checkNeighbour(row, col, strn) {
   if(strn === 'TOP')
@@ -51,7 +46,8 @@ let config = JSON.parse(fs.readFileSync(process.argv[2] + '/' + process.argv[3] 
 
 var pdfImage = new PDFImage(process.argv[2] + '/' + process.argv[3] + '.pdf', {
 convertOptions: {
-    "-quality": process.argv[4] ? process.argv[4] : "75"
+    "-quality" : "75",
+    "-density": process.argv[4] ? process.argv[4] : "75"
 }
 });
 pdfImage.convertFile().then(async function (imagePaths) {
@@ -60,16 +56,8 @@ pdfImage.convertFile().then(async function (imagePaths) {
   for (let key in imagePaths) {
     console.log(key);
     images.push(await Jimp.read(imagePaths[key]));
+    fs.unlinkSync(imagePaths[key])
   }
-
-
-
-
-    // var w = image0.bitmap.width;
-    // var h = image0.bitmap.height;
-    // console.log(w, h);
-    //
-    // image0.crop(10, 10, w - 100, h - 100);
 
   var x = 0;
   var y = 0;
@@ -118,6 +106,6 @@ pdfImage.convertFile().then(async function (imagePaths) {
         x += images[config.page_layout[j]].bitmap.width;
         y = 0;
       }
-      image.write('crop1.png');
+      image.write(process.argv[3] + '.png');
     });
 });
