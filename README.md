@@ -4,7 +4,7 @@ Proof of concept - sewing plotter pdf file to image converter
 
 ## Goal
 
-Save hundreds of A4 paper sheets/time and pausch your files with help of a (DLP) projector.
+Save hundreds of (A4) paper sheets/time and pausch your files with help of a (DLP) projector.
 
 ## Getting Started
 
@@ -13,6 +13,8 @@ Download nodejs script and example json config file.
 ### Prerequisites
 
 Install ImageMagick and check if converter execute is known by your host system.
+
+e.g. Ubuntu install example:
 
 ```
 sudo apt-get install imagemagick ghostscript poppler-utils
@@ -36,11 +38,15 @@ npm install jimp
 
 ## config.json
 
-Each pdf file requires a config file. Three thinks must be defined:
+Each pdf file requires a config file. Three things must be defined:
 
 * page margin for left, top right and bottom independetly
 * page count in x and y direction
 * matrix with page numbers starting with index 0
+
+Options
+
+* paper grid option should be true if a second file with original paper boarder lines is required (as size reference)
 
 ## Running a test
 
@@ -64,5 +70,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## TODO
 
 * check command line parameters and config file
-* convert only used pdf size not all
-* build nice front end and discard json config file
+* build a nice front end and discard json config file

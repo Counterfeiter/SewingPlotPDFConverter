@@ -1,4 +1,6 @@
-{	"page_margin" : [ 9.2, 6.54, 9.2, 6.54 ],
+{
+	"page_margin" : [ 9.2, 6.54, 9.2, 6.54 ],
+	"draw_papergrid" : true,
 	"size" : [2, 5],
 	"page_layout" : [	1, 2,
 				3, 4,
